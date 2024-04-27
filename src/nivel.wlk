@@ -1,11 +1,16 @@
 import wollok.game.*
 import nave.*
+import pepita.*
+
 object nivel {
 	
 	method iniciar(){
 		game.addVisual(nave)
+		game.addVisual(pepita)//cambiar por enemigo
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
+		
+		game.onCollideDo(nave, { algo => algo.colision(nave) })
 	}
 	
 }

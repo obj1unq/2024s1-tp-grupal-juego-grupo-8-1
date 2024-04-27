@@ -9,6 +9,8 @@ program juego {
 	game.height(19)
 	game.boardGround("space.jpg")
 	
+	
+	
 	nivel.iniciar()
 	game.start()
 }
