@@ -6,7 +6,6 @@ object nivel {
 	
 	method iniciar(){
 		game.addVisual(nave)
-		game.addVisual(pepita)//cambiar por enemigo
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
 		
@@ -40,6 +39,35 @@ object derecha {
 	}
 }
 
+
+//MOVIMIENTOS INAVASOR
+object izquierdaInvasor {
+
+	const opuesto = derechaInvasor
+
+	method cambiarOpuesto(invasor) {
+		invasor.moverHacia(opuesto)
+	}
+
+	method siguiente(position) {
+		return position.left(1)
+	}
+
+}
+
+object derechaInvasor {
+
+	const opuesto = izquierdaInvasor
+
+	method cambiarOpuesto(invasor) {
+		invasor.moverHacia(opuesto)
+	}
+
+	method siguiente(position) {
+		return position.right(1)
+	}
+
+}
 object tablero {
 	
 	method pertenece(position) {
