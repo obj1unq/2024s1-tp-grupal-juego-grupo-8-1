@@ -1,12 +1,13 @@
 import wollok.game.*
 import enemigos.*
-import tablero.*
+import nave.*
+import nivel.*
 
 program juego {
-	game.title("Invasores del espacio")
-	game.cellSize(50)
-	game.height(20)
-	game.width(20)
+	game.title("Space Defender")
+	game.width(31)
+	game.height(19)
+	game.boardGround("space.jpg")
 	
 	
 	
@@ -18,5 +19,11 @@ program juego {
 	game.onTick(500, "invasion", {invasor1.movimiento()
 								   invasor2.movimiento()
 	})
+
+	
+	
+	
+	nivel.iniciar()
+	
 	game.start()
 }

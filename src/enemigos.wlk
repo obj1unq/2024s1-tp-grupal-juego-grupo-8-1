@@ -1,6 +1,6 @@
 import wollok.game.*
-import tablero.*
-
+import nivel.*
+import nave.*
 class Invasor {
 
 	var property vida
@@ -32,8 +32,8 @@ class Invasor {
 	method puedeMover(direccion) {
 		return escenario.puedeIr(self.position(), direccion)
 	}
-	method esAtravesable() {
-		return false
+	method colision(cohete) {
+		cohete.estadoNave(destruido)
 	}
 
 }
