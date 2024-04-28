@@ -1,7 +1,7 @@
 import wollok.game.*
 import nave.*
 import pepita.*
-
+import enemigos.*
 object nivel {
 	
 	method iniciar(){
@@ -10,6 +10,7 @@ object nivel {
 		keyboard.right().onPressDo({ nave.mover(derecha) })
 		
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
+		
 	}
 	
 }

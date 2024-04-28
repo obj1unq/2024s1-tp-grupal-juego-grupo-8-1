@@ -2,6 +2,8 @@ import wollok.game.*
 import enemigos.*
 import nave.*
 import nivel.*
+import disparo.*
+
 
 program juego {
 	game.title("Space Defender")
@@ -16,6 +18,8 @@ program juego {
 	var invasor2 = new Invasor(image="invasor-Verde.png", position = game.at(7,10),vida=1 )
 	game.addVisual(invasor1)
 	game.addVisual(invasor2)
+	game.onCollideDo(invasor1, {algo => algo.colision(invasor1)})
+	game.onCollideDo(invasor2, {algo => algo.colision(invasor2)})
 	game.onTick(500, "invasion", {invasor1.movimiento()
 								   invasor2.movimiento()
 	})
@@ -24,6 +28,7 @@ program juego {
 	
 	
 	nivel.iniciar()
+	game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala()})
 	
 	game.start()
 }

@@ -1,6 +1,8 @@
 import wollok.game.*
 import nivel.*
 import nave.*
+
+
 class Invasor {
 
 	var property vida
@@ -11,6 +13,11 @@ class Invasor {
 
 	method moverHacia(_moverHacia) {
 		moverHacia = _moverHacia
+	}
+	
+	method atacado(valor) {
+		if (vida-valor == 0) {game.removeVisual(self)}
+		else vida -= valor
 	}
 
 	method movimiento() {
