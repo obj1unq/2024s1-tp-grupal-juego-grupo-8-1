@@ -37,7 +37,9 @@ object nave {
 	method puedeDisparar(){
 		return estadoNave.puedeDisparar()
 	}
-
+	method colision(algo) {
+		
+	}
 }
 
 object vivo {
@@ -72,3 +74,4 @@ object destruido{
 		game.schedule(1000, { game.stop()})
 	}
 }
+
