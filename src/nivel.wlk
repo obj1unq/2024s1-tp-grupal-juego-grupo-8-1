@@ -1,6 +1,5 @@
 import wollok.game.*
 import nave.*
-import pepita.*
 import enemigos.*
 object nivel {
 	
