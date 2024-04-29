@@ -1,8 +1,34 @@
 import wollok.game.*
-import pepita.*
+import enemigos.*
+import nave.*
+import nivel.*
+import disparo.*
+
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.title("Space Defender")
+	game.width(31)
+	game.height(19)
+	game.boardGround("space.jpg")
+	
+	
+	
+	//Invasores config
+	var invasor1 = new Invasor(image="invasor-Verde.png", position = game.at(5,5),vida=1 )
+	var invasor2 = new Invasor(image="invasor-Verde.png", position = game.at(7,10),vida=1 )
+	game.addVisual(invasor1)
+	game.addVisual(invasor2)
+	game.onCollideDo(invasor1, {algo => algo.colision(invasor1)})
+	game.onCollideDo(invasor2, {algo => algo.colision(invasor2)})
+	game.onTick(500, "invasion", {invasor1.movimiento()
+								   invasor2.movimiento()
+	})
+
+	
+	
+	
+	nivel.iniciar()
+	game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala()})
+	
 	game.start()
 }
