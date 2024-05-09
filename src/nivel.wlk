@@ -7,10 +7,10 @@ object nivel {
 	
 	const property posiciones = #{game.at(5,5),game.at(7,10)}
 	
-	const enemigos = #{}
+	var property enemigos = []
 	
 	method iniciar(){
-		enemigosFactory.crearInvasores(posiciones)
+		enemigosFactory.crearInvasores(posiciones,self)
 		game.addVisual(nave)
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
@@ -26,6 +26,10 @@ object nivel {
 		if (enemigos.isEmpty()){
 			nave.ganar()
 		}
+	}
+	
+	method quitarInvasor(){
+		enemigos = enemigos.drop(1)
 	}
 	
 }
