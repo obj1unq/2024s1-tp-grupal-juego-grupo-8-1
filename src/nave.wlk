@@ -60,7 +60,7 @@ object ganador{
 	method activar(){
 		game.say(nave, "Mision Cumplida!")
 		nave.position(game.at(15,1))
-		game.schedule(1000, { game.stop()})
+		//game.schedule(1000, { game.stop()})
 	}
 }
 

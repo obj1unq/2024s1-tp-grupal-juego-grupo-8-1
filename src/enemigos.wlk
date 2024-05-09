@@ -44,3 +44,18 @@ class Invasor {
 	}
 
 }
+
+object enemigosFactory {
+	
+	method crearInvasores(posiciones){
+		posiciones.forEach({posicion => self.crearInvasor(posicion)})
+	}
+	
+	method crearInvasor(posicion){
+		const invasor = new Invasor(image="invasor-Verde.png",position=posicion,vida=1)
+		game.addVisual(invasor)
+		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
+		game.onTick(500, "invasion", {invasor.movimiento()})
+		return invasor
+	}
+}

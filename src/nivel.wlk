@@ -1,15 +1,31 @@
 import wollok.game.*
 import nave.*
 import enemigos.*
+import disparo.*
+
 object nivel {
 	
+	const property posiciones = #{game.at(5,5),game.at(7,10)}
+	
+	const enemigos = #{}
+	
 	method iniciar(){
+		enemigosFactory.crearInvasores(posiciones)
 		game.addVisual(nave)
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
 		
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
 		
+		game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala()})
+		
+		game.start()
+	}
+	
+	method ganar(){
+		if (enemigos.isEmpty()){
+			nave.ganar()
+		}
 	}
 	
 }

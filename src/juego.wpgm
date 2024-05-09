@@ -14,7 +14,7 @@ program juego {
 	
 	
 	//Invasores config
-	var invasor1 = new Invasor(image="invasor-Verde.png", position = game.at(5,5),vida=1 )
+	/*var invasor1 = new Invasor(image="invasor-Verde.png", position = game.at(5,5),vida=1 )
 	game.addVisual(invasor1)
 	game.onCollideDo(invasor1, {algo => algo.colision(invasor1)})
 	
@@ -24,13 +24,13 @@ program juego {
 	
 	game.onTick(500, "invasion", {invasor1.movimiento()
 								   invasor2.movimiento()
-	})
+	})*/
 
 	
 	
 	
 	nivel.iniciar()
-	game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala()})
+	//game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala()})
 	
-	game.start()
+	//game.start()
 }
