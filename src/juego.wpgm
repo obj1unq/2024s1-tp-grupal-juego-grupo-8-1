@@ -28,7 +28,6 @@ program juego {
 
 	
 	
-	
 	nivel.iniciar()
 	//game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala()})
 	
