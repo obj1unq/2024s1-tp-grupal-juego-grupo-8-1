@@ -34,8 +34,9 @@ class Bala {
 
 object balaFactory {
 
-	method crearBala() {
+	method crearBala(nave) {
 		const bala = new Bala(image = "shot_basic.png", velocidad = 200, damage = 1)
+		bala.position(game.at(nave.position().x(), nave.position().y() + 1))
 		game.addVisual(bala)
 		game.onTick(bala.velocidad(), "recorrido de bala " + bala.identity(), { bala.recorrer()})
 		return bala

@@ -14,7 +14,7 @@ object nivel {
 	method iniciar(){
 		invasorVerdeFactory.crearInvasores(posiciones,self)
 		
-		self.nave(nave1)
+		self.nave(nave2)
 		
 		game.addVisual(nave)
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
@@ -22,7 +22,9 @@ object nivel {
 		
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
 		
-		game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala()})
+		
+		
+		game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala(nave)})
 		
 		game.start()
 	}
