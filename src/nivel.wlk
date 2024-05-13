@@ -34,6 +34,7 @@ object nivel {
 	
 }
 
+
 //posiciones temporal
 
 object arriba {
