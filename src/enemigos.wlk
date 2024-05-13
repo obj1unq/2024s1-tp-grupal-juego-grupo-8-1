@@ -86,7 +86,7 @@ class Nodriza inherits Invasor{
 	}
 }
 
-object enemigosFactory {
+object invasorVerdeFactory {
 	
 	method crearInvasores(posiciones,nivel_){
 		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
@@ -94,6 +94,40 @@ object enemigosFactory {
 	
 	method crearInvasor(posicion,nivel_){
 		const invasor = new InvasorVerde(position=posicion,nivel=nivel_)
+		invasor.definirVida()
+		game.addVisual(invasor)
+		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
+		game.onTick(500, "invasion", {invasor.movimiento()})
+		nivel_.enemigos().add(invasor)
+		return invasor
+	}
+}
+
+object invasorFuerteFactory {
+	
+	method crearInvasores(posiciones,nivel_){
+		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
+	}
+	
+	method crearInvasor(posicion,nivel_){
+		const invasor = new InvasorFuerte(position=posicion,nivel=nivel_)
+		invasor.definirVida()
+		game.addVisual(invasor)
+		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
+		game.onTick(500, "invasion", {invasor.movimiento()})
+		nivel_.enemigos().add(invasor)
+		return invasor
+	}
+}
+
+object nodrizaFactory {
+	
+	method crearInvasores(posiciones,nivel_){
+		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
+	}
+	
+	method crearInvasor(posicion,nivel_){
+		const invasor = new Nodriza(position=posicion,nivel=nivel_)
 		invasor.definirVida()
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})

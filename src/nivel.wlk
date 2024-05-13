@@ -10,7 +10,7 @@ object nivel {
 	var property enemigos = []
 	
 	method iniciar(){
-		enemigosFactory.crearInvasores(posiciones,self)
+		invasorVerdeFactory.crearInvasores(posiciones,self)
 		game.addVisual(nave)
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
