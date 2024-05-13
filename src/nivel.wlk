@@ -7,7 +7,7 @@ object nivel {
 	
 	var property nave = null
 	
-	const property posiciones = #{game.at(5,5),game.at(7,10)}
+	var property posiciones = #{game.at(5,5),game.at(7,10)}
 	
 	var property enemigos = []
 	

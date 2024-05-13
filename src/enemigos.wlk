@@ -11,6 +11,10 @@ class Invasor {
 	const property nivel
 	var vida = null
 	
+	method vida(){
+		return vida
+	}
+	
 	method definirVida()
 	
 	method image()
