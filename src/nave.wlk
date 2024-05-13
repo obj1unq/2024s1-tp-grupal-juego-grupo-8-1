@@ -1,13 +1,11 @@
 import wollok.game.*
 import nivel.*
-object nave {
+class Nave {
 	var property estadoNave = vivo
-	
 	var property position = game.at(15,1)
 	
-	method image(){
-		return "nave.png"
-	}
+	method image()
+	
 	method estadoNave(estadoNave_) {
 		if (estadoNave != estadoNave_) {
 			estadoNave = estadoNave_
@@ -41,7 +39,16 @@ object nave {
 		
 	}
 }
-
+object nave inherits Nave{
+	override method image(){
+		return "nave.png"
+	}
+}
+object nave2 inherits Nave{
+	override method image(){
+		return "nave2.png"
+	}
+}
 object vivo {
 	method puedeMover() = true
 	
