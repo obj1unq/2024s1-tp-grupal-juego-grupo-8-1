@@ -14,7 +14,7 @@ object nivel {
 	method iniciar(){
 		invasorVerdeFactory.crearInvasores(posiciones,self)
 		
-		self.nave(nave2)
+		self.nave(nave1)
 		
 		game.addVisual(nave)
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
