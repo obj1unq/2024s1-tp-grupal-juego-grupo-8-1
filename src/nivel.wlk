@@ -5,12 +5,17 @@ import disparo.*
 
 object nivel {
 	
+	var property nave = null
+	
 	const property posiciones = #{game.at(5,5),game.at(7,10)}
 	
 	var property enemigos = []
 	
 	method iniciar(){
 		invasorVerdeFactory.crearInvasores(posiciones,self)
+		
+		self.nave(nave2)
+		
 		game.addVisual(nave)
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })

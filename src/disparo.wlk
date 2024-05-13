@@ -5,7 +5,7 @@ import nivel.*
 class Bala {
 
 	var property velocidad
-	var property position = game.at(nave.position().x(), nave.position().y() + 1)
+	var property position = game.at(nave1.position().x(), nave1.position().y() + 1)
 	var property image
 	const moverHacia = arriba
 	var property damage

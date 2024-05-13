@@ -22,9 +22,11 @@ class Nave {
 		return estadoNave.puedeMover() && tablero.puedeIr(self.position(),direccion)
 	}
 	method ganar() {
+		ganador.nave(self)
 		self.estadoNave(ganador)
 	}
 	method morir(){
+		ganador.nave(self)
 		self.estadoNave(destruido)
 	}
 	method atacar(){
@@ -39,7 +41,7 @@ class Nave {
 		
 	}
 }
-object nave inherits Nave{
+object nave1 inherits Nave{
 	override method image(){
 		return "nave.png"
 	}
@@ -50,6 +52,7 @@ object nave2 inherits Nave{
 	}
 }
 object vivo {
+	
 	method puedeMover() = true
 	
 	method puedeDisparar() = false
@@ -60,6 +63,9 @@ object vivo {
 }
 
 object ganador{
+	
+	var property nave = null
+	
 	method puedeMover() = false
 	
 	method puedeDisparar() = false
@@ -72,6 +78,9 @@ object ganador{
 }
 
 object destruido{
+	
+	var property nave = null
+	
 	method puedeMover() = false
 	
 	method puedeDisparar() = false
