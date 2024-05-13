@@ -5,12 +5,15 @@ import nave.*
 
 class Invasor {
 
-	var property vida
-	var property image
 	var property position
 	const escenario = tablero
 	var moverHacia = izquierdaInvasor
 	const property nivel
+	var vida = null
+	
+	method definirVida()
+	
+	method image()
 
 	method moverHacia(_moverHacia) {
 		moverHacia = _moverHacia
@@ -50,14 +53,48 @@ class Invasor {
 
 }
 
-object enemigosFactory {
+class InvasorVerde inherits Invasor{
 	
-	method crearInvasores(posiciones,nivel_){
-		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
+	 override method definirVida(){
+		vida=1
 	}
 	
-	method crearInvasor(posicion,nivel_){
-		const invasor = new Invasor(image="invasor-Verde.png",position=posicion,vida=1,nivel=nivel_)
+	override method image(){
+		return "invasor-Verde.png"
+	}
+}
+
+class InvasorFuerte inherits Invasor{
+	
+	override method definirVida(){
+		vida=3
+	}
+	
+	override method image(){
+		return "invasorFuerte.png"
+	}
+}
+
+class Nodriza inherits Invasor{
+	
+	override method definirVida(){
+		vida=5
+	}
+	
+	override method image(){
+		return "nodriza.png"
+	}
+}
+
+object enemigosFactory {
+	
+	method crearInvasores(tipo,posiciones,nivel_){
+		posiciones.forEach({posicion => self.crearInvasor(tipo,posicion,nivel_)})
+	}
+	
+	method crearInvasor(tipo,posicion,nivel_){
+		const invasor = new InvasorVerde(position=posicion,nivel=nivel_)
+		invasor.definirVida()
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
 		game.onTick(500, "invasion", {invasor.movimiento()})
