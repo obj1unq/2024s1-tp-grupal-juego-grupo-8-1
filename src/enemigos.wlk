@@ -88,11 +88,11 @@ class Nodriza inherits Invasor{
 
 object enemigosFactory {
 	
-	method crearInvasores(tipo,posiciones,nivel_){
-		posiciones.forEach({posicion => self.crearInvasor(tipo,posicion,nivel_)})
+	method crearInvasores(posiciones,nivel_){
+		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
 	}
 	
-	method crearInvasor(tipo,posicion,nivel_){
+	method crearInvasor(posicion,nivel_){
 		const invasor = new InvasorVerde(position=posicion,nivel=nivel_)
 		invasor.definirVida()
 		game.addVisual(invasor)
