@@ -38,7 +38,5 @@ describe "juego"{
 		invasorV.atacado(1)
 		assert.equals( 1,nivel.enemigos().size())
 	}
-	test ""{
-		
-	}
+	
 }
