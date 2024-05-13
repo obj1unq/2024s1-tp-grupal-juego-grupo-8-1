@@ -10,13 +10,18 @@ class Invasor {
 	var property position
 	const escenario = tablero
 	var moverHacia = izquierdaInvasor
+	const property nivel
 
 	method moverHacia(_moverHacia) {
 		moverHacia = _moverHacia
 	}
 	
 	method atacado(valor) {
-		if (vida-valor == 0) {game.removeVisual(self)}
+		if (vida-valor == 0) {
+			game.removeVisual(self)
+			nivel.quitarInvasor()
+			nivel.ganar()
+		}
 		else vida -= valor
 	}
 
@@ -43,4 +48,20 @@ class Invasor {
 		cohete.estadoNave(destruido)
 	}
 
+}
+
+object enemigosFactory {
+	
+	method crearInvasores(posiciones,nivel_){
+		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
+	}
+	
+	method crearInvasor(posicion,nivel_){
+		const invasor = new Invasor(image="invasor-Verde.png",position=posicion,vida=1,nivel=nivel_)
+		game.addVisual(invasor)
+		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
+		game.onTick(500, "invasion", {invasor.movimiento()})
+		nivel_.enemigos().add(invasor)
+		return invasor
+	}
 }
