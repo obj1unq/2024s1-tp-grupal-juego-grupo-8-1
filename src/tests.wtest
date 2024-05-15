@@ -18,7 +18,7 @@ describe "juego"{
 	
 	test "testeo de Daño y posicion de la bala" {
 		
-		assert.equals(game.at(15,2),bala.position())
+		assert.equals(game.at(12,1),bala.position())
 		
 		nivel.nave(nave1)
 		invasor.atacado(1)
@@ -40,3 +40,24 @@ describe "juego"{
 	}
 	
 }
+
+describe "nave" {
+	const invasor = invasorFuerteFactory.crearInvasor(game.at(1,2),nivel)
+	
+	method initialize(){
+		game.width(31)
+		game.height(19)
+	
+	}
+	
+	test "la nave en posicion 12,0 y un alien lo choca, fin del juego" {
+		game.addVisual(nave1)
+		invasor.colision(nave1)
+		assert.equals(#{nave1}, game.allVisuals().asSet())
+	}
+}
+
+
+
+
+
