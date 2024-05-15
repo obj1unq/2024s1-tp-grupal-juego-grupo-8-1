@@ -29,7 +29,7 @@ describe "juego"{
 		assert.equals(game.at(1,2),invasor.position())
 		assert.equals( 2,nivel1.enemigos().size())// se tiene en cuenta los invasores creados en el describe
 		nivel1.posiciones(#{game.at(5,5),game.at(7,10),game.at(8,6)})
-		invasorVerdeFactory.crearInvasores(nivel1.posiciones(),nivel1)
+		invasorFactory.crearInvasores(0,nivel1.posiciones(),nivel1)
 		
 		assert.equals( 5,nivel1.enemigos().size())
 	}

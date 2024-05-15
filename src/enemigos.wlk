@@ -94,12 +94,17 @@ class Nodriza inherits Invasor{
 	}
 }
 
-object invasorVerdeFactory {
+object invasorFactory {
+	const enemigos = [invasorVerdeFactory,invasorFuerteFactory,nodrizaFactory]
 	
-	method crearInvasores(posiciones,nivel_){
-		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
+	method crearInvasores(enemigo,posiciones,nivel_){
+		posiciones.forEach({posicion => enemigos.get(enemigo).crearInvasor(posicion,nivel_)})
 	}
 	
+}
+
+object invasorVerdeFactory {
+
 	method crearInvasor(posicion,nivel_){
 		const invasor = new InvasorVerde(position=posicion,nivel=nivel_)
 		invasor.definirVida()
@@ -112,11 +117,7 @@ object invasorVerdeFactory {
 }
 
 object invasorFuerteFactory {
-	
-	method crearInvasores(posiciones,nivel_){
-		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
-	}
-	
+
 	method crearInvasor(posicion,nivel_){
 		const invasor = new InvasorFuerte(position=posicion,nivel=nivel_)
 		invasor.definirVida()
@@ -129,11 +130,7 @@ object invasorFuerteFactory {
 }
 
 object nodrizaFactory {
-	
-	method crearInvasores(posiciones,nivel_){
-		posiciones.forEach({posicion => self.crearInvasor(posicion,nivel_)})
-	}
-	
+
 	method crearInvasor(posicion,nivel_){
 		const invasor = new Nodriza(position=posicion,nivel=nivel_)
 		invasor.definirVida()

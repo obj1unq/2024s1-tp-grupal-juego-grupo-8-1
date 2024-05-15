@@ -56,7 +56,7 @@ class Nivel {
 object nivel1 inherits Nivel{
 	
 	override method crearEnemigos(){
-		invasorVerdeFactory.crearInvasores(posiciones,self)
+		invasorFactory.crearInvasores(0,posiciones,self)
 	}
 	
 }
