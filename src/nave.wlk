@@ -2,15 +2,12 @@ import wollok.game.*
 import nivel.*
 class Nave {
 	var property estadoNave = vivo
-	var property position = game.at(15,1)
+	var property position = game.at(12,0)
 	
 	method image()
 	
-	method estadoNave(estadoNave_) {
-		if (estadoNave != estadoNave_) {
+	method estadoNave(estadoNave_) { 
 			estadoNave = estadoNave_
-			estadoNave.activar()
-		}
 	}
 	
  	method mover(direccion) {
@@ -22,12 +19,14 @@ class Nave {
 		return estadoNave.puedeMover() && tablero.puedeIr(self.position(),direccion)
 	}
 	method ganar() {
-		ganador.nave(self)
 		self.estadoNave(ganador)
+		estadoNave.nave(self)
+		estadoNave.activar()
 	}
 	method morir(){
-		ganador.nave(self)
 		self.estadoNave(destruido)
+		estadoNave.nave(self)
+		estadoNave.activar()
 	}
 	method atacar(){
 		/*if(puedeDisparar()){
@@ -72,7 +71,7 @@ object ganador{
 	
 	method activar(){
 		game.say(nave, "Mision Cumplida!")
-		nave.position(game.at(15,1))
+		nave.position(game.at(12,1))
 		game.schedule(1000, { game.stop()})
 	}
 }
@@ -86,6 +85,8 @@ object destruido{
 	method puedeDisparar() = false
 	
 	method activar() {
+		game.clear()
+		game.addVisualIn(nave,game.at(12,1))
 		game.say(nave, "Mision Fallida!")
 		game.schedule(1000, { game.stop()})
 	}
