@@ -47,8 +47,8 @@ object nivel {
 		}
 	}
 	
-	method quitarInvasor(){
-		enemigos = enemigos.drop(1)
+	method quitarInvasor(enemigo){
+		enemigos.remove(enemigo)
 	}
 	
 }
