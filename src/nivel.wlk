@@ -4,7 +4,7 @@ import enemigos.*
 import disparo.*
 
 
-object nivel {
+class Nivel {
 	
 	var property nave = null
 	
@@ -24,7 +24,7 @@ object nivel {
 	}
 	method iniciar(){
 		self.crearPosiciones()
-		invasorVerdeFactory.crearInvasores(posiciones,self)
+		self.crearEnemigos()
 		
 		self.nave(nave2)
 		
@@ -34,12 +34,12 @@ object nivel {
 		
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
 		
-		
-		
 		game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala(nave)})
 		
 		game.start()
 	}
+	
+	method crearEnemigos()
 	
 	method ganar(){
 		if (enemigos.isEmpty()){
@@ -49,6 +49,14 @@ object nivel {
 	
 	method quitarInvasor(){
 		enemigos = enemigos.drop(1)
+	}
+	
+}
+
+object nivel1 inherits Nivel{
+	
+	override method crearEnemigos(){
+		invasorVerdeFactory.crearInvasores(posiciones,self)
 	}
 	
 }
