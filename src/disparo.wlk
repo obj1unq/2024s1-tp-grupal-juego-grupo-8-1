@@ -5,7 +5,7 @@ import nivel.*
 class Bala {
 
 	var property velocidad
-	var property position = game.at(nave1.position().x(), nave1.position().y() + 1)
+	var property position = null
 	var property image
 	const moverHacia = arriba
 	var property damage
@@ -19,7 +19,7 @@ class Bala {
 	}
 
 	method esUltimaPosicion() {
-		return self.position().y() >= 18
+		return self.position().y() >= 13
 	}
 
 	method colision(algo) {

@@ -52,7 +52,11 @@ class Invasor {
 		return escenario.puedeIr(self.position(), direccion)
 	}
 	method colision(cohete) {
-		cohete.estadoNave(destruido)
+		cohete.morir()
+	}
+	
+	method morir() {
+		
 	}
 
 }

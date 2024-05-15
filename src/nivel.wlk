@@ -1,17 +1,29 @@
-import wollok.game.*
 import nave.*
+import wollok.game.*
 import enemigos.*
 import disparo.*
+
 
 object nivel {
 	
 	var property nave = null
 	
-	var property posiciones = #{game.at(5,5),game.at(7,10)}
+	var property posiciones = #{}
 	
+	var property posicionesx =[6,8,10,12,14,16,18,20]
+	var property posicionesy =[4,6,8,10]
 	var property enemigos = []
 	
+	method crearPosiciones() {
+		
+		posicionesx.forEach({x=> 
+								posicionesy.forEach({y =>
+												posiciones.add(game.at(x,y))
+								})
+		})
+	}
 	method iniciar(){
+		self.crearPosiciones()
 		invasorVerdeFactory.crearInvasores(posiciones,self)
 		
 		self.nave(nave2)
