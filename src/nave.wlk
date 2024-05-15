@@ -20,21 +20,16 @@ class Nave {
 	}
 	method ganar() {
 		self.estadoNave(ganador)
-		estadoNave.nave(self)
-		estadoNave.activar()
+		self.activarEstado()
 	}
 	method morir(){
 		self.estadoNave(destruido)
+		self.activarEstado()
+	}
+	
+	method activarEstado() {
 		estadoNave.nave(self)
-		estadoNave.activar()
-	}
-	method atacar(){
-		/*if(puedeDisparar()){
-			bala.disparar()
-		}*///cuando este la clase bala creada se agregara el disparo
-	}
-	method puedeDisparar(){
-		return estadoNave.puedeDisparar()
+		estadoNave.activar()		
 	}
 	method colision(algo) {
 		
@@ -50,41 +45,35 @@ object nave2 inherits Nave{
 		return "nave2.png"
 	}
 }
-object vivo {
-	
-	method puedeMover() = true
-	
-	method puedeDisparar() = false
-
-	method activar() {
-	}
-
-}
-
-object ganador{
-	
+class EstadoDeNave {
 	var property nave = null
 	
 	method puedeMover() = false
 	
 	method puedeDisparar() = false
 	
-	method activar(){
+	method activar()
+}
+
+object vivo inherits EstadoDeNave{
+	override method puedeMover() = true
+	override method activar() {
+	}
+
+}
+
+
+object ganador inherits EstadoDeNave {
+	
+	override method activar(){
 		game.say(nave, "Mision Cumplida!")
 		nave.position(game.at(12,1))
 		game.schedule(1000, { game.stop()})
 	}
 }
 
-object destruido{
-	
-	var property nave = null
-	
-	method puedeMover() = false
-	
-	method puedeDisparar() = false
-	
-	method activar() {
+object destruido inherits EstadoDeNave{
+	override method activar() {
 		game.clear()
 		game.addVisualIn(nave,game.at(12,1))
 		game.say(nave, "Mision Fallida!")

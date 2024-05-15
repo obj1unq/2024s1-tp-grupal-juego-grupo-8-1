@@ -25,13 +25,20 @@ class Invasor {
 	
 	method atacado(valor) {
 		if (vida-valor == 0) {
-			game.removeVisual(self)
-			nivel.quitarInvasor()
-			nivel.ganar()
+			self.eliminarmeDeJuego()
+			self.eliminarmeDelNivel()			
 		}
 		else vida -= valor
 	}
-
+	method eliminarmeDeJuego() {
+		game.removeVisual(self)
+		game.removeTickEvent("invasion" + self.identity())
+	}
+	
+	method eliminarmeDelNivel() {
+		nivel.quitarInvasor(self)
+		nivel.ganar()
+	}
 	method movimiento() {
 		if (self.puedeMover(moverHacia)) {
 			position = moverHacia.siguiente(self.position())
@@ -105,7 +112,7 @@ object invasorVerdeFactory {
 		invasor.definirVida()
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(500, "invasion", {invasor.movimiento()})
+		game.onTick(500, "invasion" + invasor.identity() , {invasor.movimiento()})
 		nivel_.enemigos().add(invasor)
 		return invasor
 	}

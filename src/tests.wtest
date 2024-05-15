@@ -55,6 +55,8 @@ describe "nave" {
 		invasor.colision(nave1)
 		assert.equals(#{nave1}, game.allVisuals().asSet())
 	}
+	
+	
 }
 
 
