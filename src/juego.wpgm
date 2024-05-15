@@ -7,8 +7,8 @@ import disparo.*
 
 program juego {
 	game.title("Space Defender")
-	game.width(31)
-	game.height(19)
+	game.width(25) //previo 31 
+	game.height(14) //previo 19
 	game.boardGround("space.jpg")
 	
 	
