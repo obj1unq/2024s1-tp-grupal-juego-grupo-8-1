@@ -79,7 +79,7 @@ class InvasorFuerte inherits Invasor{
 	}
 	
 	override method image(){
-		return "invasorFuerte.png"
+		return "enemigoFuerte.png"
 	}
 }
 
