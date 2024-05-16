@@ -3,7 +3,7 @@ import enemigos.*
 import nave.*
 import nivel.*
 import disparo.*
-
+import menu.*
 
 program juego {
 	game.title("Space Defender")
