@@ -4,12 +4,31 @@ import nave.*
 
 object menu {
 	method iniciar(){
+		
+		//VISUALES DEL MENU
 		game.addVisual(nave1menu)
 		game.addVisual(nave2menu)
 		game.addVisual(numero1)
 		game.addVisual(numero2)
-		keyboard.num1().onPressDo({ game.clear() nivel1.iniciar() })
-		keyboard.num2().onPressDo({ game.clear() nivel1.iniciar()})
+		
+		//FONDO DE TODO EL GAME ACTUALMENTE
+		game.boardGround("space.jpg")
+		
+		//SELECCION DE NAVE
+		keyboard.num1().onPressDo({ game.clear()
+									
+									//INICIAR NIVEL CON NAVE 1
+									nivel1.nave(nave1)
+								    nivel1.iniciar()
+								 })
+		keyboard.num2().onPressDo({ game.clear()
+			
+									//INICIAR NIVEL CON NAVE 2	
+									nivel1.nave(nave2)
+								    nivel1.iniciar()
+								 })
+		
+		//INICIO 
 		game.start()
 	}
 }

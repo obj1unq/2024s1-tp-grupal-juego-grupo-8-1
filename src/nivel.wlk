@@ -24,19 +24,22 @@ class Nivel {
 		})
 	}
 	method iniciar(){
+		
+		//VISUALES
 		self.crearPosiciones()
 		self.crearEnemigos()
-		self.nave(nave1)
-		
 		game.addVisual(nave)
+	
+		
+		//COMPORTAMIENTO DE NAVE
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
-		
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
 		
+		
+		//BALA
 		game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala(nave)})
 		
-		game.start()
 	}
 	
 	method crearEnemigos()
