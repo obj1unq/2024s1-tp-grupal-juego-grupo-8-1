@@ -14,6 +14,7 @@ class Nivel {
 	var property posicionesy =[4,6,8,10]
 	var property enemigos = []
 	
+	
 	method crearPosiciones() {
 		
 		posicionesx.forEach({x=> 
@@ -25,8 +26,7 @@ class Nivel {
 	method iniciar(){
 		self.crearPosiciones()
 		self.crearEnemigos()
-		
-		self.nave(nave2)
+		self.nave(nave1)
 		
 		game.addVisual(nave)
 		keyboard.left().onPressDo({ nave.mover(izquierda) })

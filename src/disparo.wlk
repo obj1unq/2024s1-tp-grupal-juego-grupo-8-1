@@ -21,7 +21,7 @@ class Bala {
 	method esUltimaPosicion() {
 		return self.position().y() >= 13
 	}
-
+	
 	method colision(algo) {
 		algo.atacado(self.damage())
 		self.removerBala()
