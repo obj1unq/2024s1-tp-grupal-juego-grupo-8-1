@@ -130,7 +130,7 @@ object invasorFuerteFactory {
 		invasor.definirVida()
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(500, "invasion", {invasor.movimiento()})
+		game.onTick(500, "invasion"+ invasor.identity(), {invasor.movimiento()})
 		nivel_.enemigos().add(invasor)
 		return invasor
 	}
@@ -143,7 +143,7 @@ object nodrizaFactory {
 		invasor.definirVida()
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(500, "invasion", {invasor.movimiento()})
+		game.onTick(500, "invasion"+ invasor.identity(), {invasor.movimiento()})
 		nivel_.enemigos().add(invasor)
 		return invasor
 	}
