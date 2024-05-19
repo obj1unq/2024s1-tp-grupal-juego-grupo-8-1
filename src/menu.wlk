@@ -28,8 +28,7 @@ object menu {
 								    nivel1.iniciar()
 								 })
 		
-		//INICIO 
-		game.start()
+		
 	}
 }
 
