@@ -101,6 +101,22 @@ class Nodriza inherits Invasor{
 	}
 }
 
+class FactoryInvasor {
+	
+	method invasor(posicion, nivel)
+	
+	method crearInvasor(posicion,nivel_){
+		const invasor = self.invasor(posicion, nivel_)
+		invasor.definirVida()
+		game.addVisual(invasor)
+		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
+		game.onTick(500, "invasion"+ invasor.identity(), {invasor.movimiento()})
+		nivel_.enemigos().add(invasor)
+		return invasor
+	}
+}
+
+
 object invasorFactory {
 	const enemigos = [invasorVerdeFactory,invasorFuerteFactory,nodrizaFactory]
 	
@@ -110,41 +126,34 @@ object invasorFactory {
 	
 }
 
-object invasorVerdeFactory {
+object invasorVerdeFactory inherits FactoryInvasor {
 
-	method crearInvasor(posicion,nivel_){
-		const invasor = new InvasorVerde(position=posicion,nivel=nivel_)
-		invasor.definirVida()
-		game.addVisual(invasor)
-		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(500, "invasion" + invasor.identity() , {invasor.movimiento()})
-		nivel_.enemigos().add(invasor)
-		return invasor
-	}
+	override method invasor(posicion, _nivel) {
+		return new InvasorVerde(nivel= _nivel, position=posicion)
 }
 
-object invasorFuerteFactory {
-
-	method crearInvasor(posicion,nivel_){
-		const invasor = new InvasorFuerte(position=posicion,nivel=nivel_)
-		invasor.definirVida()
-		game.addVisual(invasor)
-		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(500, "invasion"+ invasor.identity(), {invasor.movimiento()})
-		nivel_.enemigos().add(invasor)
-		return invasor
-	}
 }
 
-object nodrizaFactory {
+object invasorFuerteFactory inherits FactoryInvasor {
 
-	method crearInvasor(posicion,nivel_){
-		const invasor = new Nodriza(position=posicion,nivel=nivel_)
-		invasor.definirVida()
-		game.addVisual(invasor)
-		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(500, "invasion"+ invasor.identity(), {invasor.movimiento()})
-		nivel_.enemigos().add(invasor)
-		return invasor
-	}
+	override method invasor(posicion, _nivel) {
+		return new InvasorFuerte(nivel= _nivel, position=posicion)
 }
+
+}
+
+object nodrizaFactory inherits FactoryInvasor{
+	
+	override method invasor(posicion, _nivel) {
+		return new Nodriza(nivel= _nivel, position=posicion)
+	}
+	
+}
+
+
+
+
+
+
+
+
