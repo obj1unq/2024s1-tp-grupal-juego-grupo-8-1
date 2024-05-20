@@ -5,7 +5,6 @@ class Nave {
 	var property estadoNave = vivo
 	var property position = game.at(12,0)
 	var property puedeDisparar=true
-	
 	method image()
 	
 	method estadoNave(estadoNave_) { 
@@ -30,12 +29,13 @@ class Nave {
 	} 
 	method disparar() {
 		if (puedeDisparar) {
-			balaFactory.crearBala(self)
+			self.tipoBala().crearBala(self)
 			self.puedeDisparar(false)
-			game.schedule(1000, {self.puedeDisparar(true)})
+			game.schedule(self.velocidadDeDisparo(), {self.puedeDisparar(true)})
 			}
 	}
-	
+	method tipoBala() 
+	method velocidadDeDisparo()
 	method activarEstado() {
 		estadoNave.nave(self)
 		estadoNave.activar()		
@@ -45,11 +45,25 @@ class Nave {
 	}
 }
 object nave1 inherits Nave{
+	var property tipoBala = balaRapidaFactory
+	override method velocidadDeDisparo() {
+		return 600
+	}
+	override method tipoBala() {
+		return tipoBala
+	}
 	override method image(){
 		return "nave.png"
 	}
 }
 object nave2 inherits Nave{
+	var property tipoBala = balaFuerteFactory
+	override method velocidadDeDisparo() {
+		return 1000
+	}
+	override method tipoBala() {
+		return tipoBala
+	}
 	override method image(){
 		return "nave2.png"
 	}

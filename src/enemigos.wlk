@@ -24,7 +24,7 @@ class Invasor {
 	}
 	
 	method atacado(valor) {
-		if (vida-valor == 0) {
+		if (vida-valor <= 0) {
 			self.eliminarmeDeJuego()
 			self.eliminarmeDelNivel()			
 		}

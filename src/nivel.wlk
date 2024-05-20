@@ -3,7 +3,7 @@ import wollok.game.*
 import enemigos.*
 import disparo.*
 import mapaNivel.*
-
+import menu.*
 
 class Nivel {
 	
@@ -40,6 +40,9 @@ class Nivel {
 		//BALA
 		keyboard.space().onPressDo({ nave.disparar()})
 		
+		//keyboard 
+		keyboard.r().onPressDo({game.clear()
+							menu.iniciar()})	
 		
 	}
 	
