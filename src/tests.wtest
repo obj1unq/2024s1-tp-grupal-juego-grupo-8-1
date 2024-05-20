@@ -28,10 +28,11 @@ describe "juego"{
 	test "creacion de enemigos"{
 		assert.equals(game.at(1,2),invasor.position())
 		assert.equals( 2,nivel1.enemigos().size())// se tiene en cuenta los invasores creados en el describe
-		nivel1.posiciones(#{game.at(5,5),game.at(7,10),game.at(8,6)})
-		invasorFactory.crearInvasores(0,nivel1.posiciones(),nivel1)
+		nivel1.nave(nave1)
+		nivel1.generar()
+		assert.equals(1,game.getObjectsIn(game.at(5,4)).size())
 		
-		assert.equals( 5,nivel1.enemigos().size())
+		assert.equals( 38,nivel1.enemigos().size())
 	}
 	test "muerte de enemigo" {
 		assert.equals( 2,nivel1.enemigos().size())
