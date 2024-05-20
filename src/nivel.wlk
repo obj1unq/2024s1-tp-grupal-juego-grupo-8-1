@@ -37,10 +37,9 @@ class Nivel {
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
-		
-		
 		//BALA
-		game.onTick(1500, "Nueva Bala ", { balaFactory.crearBala(nave)})
+		keyboard.space().onPressDo({ nave.disparar()})
+		
 		
 	}
 	
