@@ -2,34 +2,36 @@ import nave.*
 import wollok.game.*
 import enemigos.*
 import disparo.*
+import mapaNivel.*
 
 
 class Nivel {
 	
 	var property nave = null
 	
-	var property posiciones = #{}
-	
-	var property posicionesx =[6,8,10,12,14,16,18,20]
-	var property posicionesy =[4,6,8,10]
 	var property enemigos = []
 	
+	method celdas()
 	
-	method crearPosiciones() {
-		
-		posicionesx.forEach({x=> 
-								posicionesy.forEach({y =>
-												posiciones.add(game.at(x,y))
-								})
+	method generar() {
+		game.width(self.celdas().anyOne().size())
+		game.height(self.celdas().size())
+		(0..game.width() -1).forEach({x =>
+			(0..game.height() -1).forEach( {y =>
+				self.generarCelda(x,y)
+			})
 		})
 	}
+	
+	method generarCelda(x,y) {
+		const celda = self.celdas().get(y).get(x)
+		celda.generar(game.at(x,y),self)
+	}
+
 	method iniciar(){
 		
 		//VISUALES
-		self.crearPosiciones()
-		self.crearEnemigos()
-		game.addVisual(nave)
-	
+		self.generar()
 		
 		//COMPORTAMIENTO DE NAVE
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
@@ -42,7 +44,6 @@ class Nivel {
 		
 	}
 	
-	method crearEnemigos()
 	
 	method ganar(){
 		if (enemigos.isEmpty()){
@@ -58,8 +59,25 @@ class Nivel {
 
 object nivel1 inherits Nivel{
 	
-	override method crearEnemigos(){
-		invasorFactory.crearInvasores(0,posiciones,self)
+	var celdas = [
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,v,_,v,_,v,_,v,_,v,_,v,_,v,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,v,_,v,_,v,_,v,_,v,_,v,_,v,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,v,_,v,_,v,_,v,_,v,_,v,_,v,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,v,_,v,_,v,_,v,_,v,_,v,_,v,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_,c,_,_,_,_,_,_,_,_,_,_,_,_]
+	].reverse()
+	
+	override method celdas(){
+		return celdas
 	}
 	
 }
