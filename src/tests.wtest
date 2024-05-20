@@ -8,7 +8,7 @@ import nivel.*
 describe "juego"{
 	const invasor = invasorFuerteFactory.crearInvasor(game.at(1,2),nivel1)
 	const invasorV = invasorVerdeFactory.crearInvasor(game.at(1,3),nivel1)
-	const bala = balaFactory.crearBala(nave1)
+	const bala = balaFuerteFactory.crearBala(nave1)
 	
 	method initialize(){
 		game.width(31)

@@ -4,12 +4,13 @@ import nivel.*
 
 class Bala {
 
-	var property velocidad
-	var property position = null
-	var property image
+	var property position  = null
+	var property image     = null
 	const moverHacia = arriba
-	var property damage
-
+	
+	method velocidad()
+	
+	method damage()
 	method recorrer() {
 		if (not self.esUltimaPosicion()) {
 			position = moverHacia.siguiente(self.position())
@@ -32,10 +33,10 @@ class Bala {
 	}
 }
 
-object balaFactory {
-
+class BalaFactory {
+	method bala()
 	method crearBala(nave) {
-		const bala = new Bala(image = "shot_basic.png", velocidad = 200, damage = 1)
+		const bala = self.bala()
 		bala.position(game.at(nave.position().x(), nave.position().y() + 1))
 		game.addVisual(bala)
 		game.onTick(bala.velocidad(), "recorrido de bala " + bala.identity(), { bala.recorrer()})
@@ -43,4 +44,42 @@ object balaFactory {
 	}
 
 }
+
+object balaFuerteFactory inherits BalaFactory{
+	override method bala() {
+		return new BalaFuerte()
+	}
+}
+
+object balaRapidaFactory inherits BalaFactory{
+	override method bala() {
+		return new BalaRapida()
+	}
+}
+
+class BalaRapida inherits Bala {
+ 	override method image() {
+ 		return "shot_basic.png"
+ 	}
+ 	override method damage() {
+ 		return 1
+ 	}
+ 	override method velocidad() {
+ 		return 150
+ 	}
+}
+
+class BalaFuerte inherits Bala {
+ 	override method image() {
+ 		return "shot_basic.png" // luego cambiar png
+ 	}
+ 	override method damage() {
+ 		return  2.5
+ 	}
+ 	override method velocidad() {
+ 		return 250
+ 	}
+}
+
+
 

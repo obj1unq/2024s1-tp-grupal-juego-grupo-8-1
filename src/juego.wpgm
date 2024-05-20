@@ -6,6 +6,7 @@ program juego {
 	game.width(25) //previo 31 
 	game.height(14) //previo 19
 	
+	
 	//CONFIGURAR MENU
 	menu.iniciar()
 	
