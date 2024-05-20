@@ -29,7 +29,6 @@ class Nivel {
 		self.crearPosiciones()
 		self.crearEnemigos()
 		game.addVisual(nave)
-		//MUSICA
 		
 		//COMPORTAMIENTO DE NAVE
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
