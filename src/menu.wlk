@@ -13,6 +13,7 @@ object menu {
 		
 		//FONDO DE TODO EL GAME ACTUALMENTE
 		game.boardGround("space.jpg")
+		self.musicaFondo()
 		
 		//SELECCION DE NAVE
 		keyboard.num1().onPressDo({ game.clear()
@@ -29,6 +30,11 @@ object menu {
 								 })
 		
 		
+	}
+	method musicaFondo(){
+		const fondo = game.sound("musicaFondo.mp3")
+		fondo.shouldLoop(true)
+		game.schedule(500, { fondo.play()} )
 	}
 }
 

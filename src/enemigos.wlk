@@ -33,6 +33,7 @@ class Invasor {
 	method eliminarmeDeJuego() {
 		game.removeVisual(self)
 		game.removeTickEvent("invasion" + self.identity())
+		game.sound("muerte.mp3").play()
 	}
 	
 	method eliminarmeDelNivel() {

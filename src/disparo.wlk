@@ -30,6 +30,9 @@ class Bala {
 		game.removeTickEvent("recorrido de bala " + self.identity())
 		game.removeVisual(self)
 	}
+	method sonido(){
+		game.sound("disparo.mp3").play()
+	}
 }
 
 object balaFactory {
@@ -38,6 +41,7 @@ object balaFactory {
 		const bala = new Bala(image = "shot_basic.png", velocidad = 200, damage = 1)
 		bala.position(game.at(nave.position().x(), nave.position().y() + 1))
 		game.addVisual(bala)
+		bala.sonido()
 		game.onTick(bala.velocidad(), "recorrido de bala " + bala.identity(), { bala.recorrer()})
 		return bala
 	}
