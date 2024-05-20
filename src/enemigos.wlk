@@ -117,15 +117,6 @@ class FactoryInvasor {
 }
 
 
-object invasorFactory {
-	const enemigos = [invasorVerdeFactory,invasorFuerteFactory,nodrizaFactory]
-	
-	method crearInvasores(enemigo,posiciones,nivel_){
-		posiciones.forEach({posicion => enemigos.get(enemigo).crearInvasor(posicion,nivel_)})
-	}
-	
-}
-
 object invasorVerdeFactory inherits FactoryInvasor {
 
 	override method invasor(posicion, _nivel) {
