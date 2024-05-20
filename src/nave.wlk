@@ -1,8 +1,10 @@
 import wollok.game.*
 import nivel.*
+import disparo.*
 class Nave {
 	var property estadoNave = vivo
 	var property position = game.at(12,0)
+	var property puedeDisparar=true
 	
 	method image()
 	
@@ -25,6 +27,13 @@ class Nave {
 	method morir(){
 		self.estadoNave(destruido)
 		self.activarEstado()
+	} 
+	method disparar() {
+		if (puedeDisparar) {
+			balaFactory.crearBala(self)
+			self.puedeDisparar(false)
+			game.schedule(1000, {self.puedeDisparar(true)})
+			}
 	}
 	
 	method activarEstado() {
