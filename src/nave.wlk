@@ -91,7 +91,8 @@ object ganador inherits EstadoDeNave {
 	override method activar(){
 		game.say(nave, "Mision Cumplida!")
 		nave.position(game.at(12,1))
-		game.schedule(1000, { game.stop()})
+		nave.estadoNave(vivo)
+		//game.schedule(1000, { game.stop()})
 	}
 }
 
