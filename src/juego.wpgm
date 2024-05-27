@@ -8,6 +8,9 @@ program juego {
 	
 	
 	//CONFIGURAR MENU
+	const fondo = game.sound("musicaFondo.mp3")
+	fondo.shouldLoop(true)
+	game.schedule(500, { fondo.play()} )
 	menu.iniciar()
 	
 	//INICIO 

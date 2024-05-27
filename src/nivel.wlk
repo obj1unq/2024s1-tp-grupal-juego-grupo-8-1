@@ -6,7 +6,6 @@ import mapaNivel.*
 import menu.*
 
 class Nivel {
-	
 	var property nave = null
 	
 	var property enemigos = []
@@ -29,7 +28,6 @@ class Nivel {
 	}
 
 	method iniciar(){
-		
 		//VISUALES
 		self.generar()
 		
@@ -38,7 +36,9 @@ class Nivel {
 		keyboard.right().onPressDo({ nave.mover(derecha) })
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
 		//BALA
-		keyboard.space().onPressDo({ nave.disparar()})
+		keyboard.space().onPressDo({ 	nave.disparar()
+										game.sound("disparo.mp3").play()
+		})
 		
 		//keyboard 
 		keyboard.r().onPressDo({game.clear()
