@@ -26,7 +26,7 @@ class Invasor {
 	method atacado(valor) {
 		if (vida-valor <= 0) {
 			self.eliminarmeDeJuego()
-			self.eliminarmeDelNivel()			
+			self.eliminarmeDelNivel()		
 		}
 		else vida -= valor
 	}
@@ -46,7 +46,6 @@ class Invasor {
 			self.bajarYCambiarDireccion()
 		}
 	}
-	
 	method bajarYCambiarDireccion() {
 		self.bajar()
 		moverHacia.cambiarOpuesto(self)	
