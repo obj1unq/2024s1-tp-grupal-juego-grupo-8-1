@@ -2,9 +2,10 @@
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Grupo 8
+- CabralHector Joel 
+- Ignacio Ariel Gimenez
+- Franco Espinoza
 
 ## Capturas
 
