@@ -11,6 +11,8 @@ class Invasor {
 	const property nivel
 	var vida = null
 	
+	method velocidad()
+	
 	method vida(){
 		return vida
 	}
@@ -69,6 +71,10 @@ class Invasor {
 
 class InvasorVerde inherits Invasor{
 	
+	override method velocidad(){
+		return 500
+	}
+	
 	 override method definirVida(){
 		vida=1
 	}
@@ -80,6 +86,10 @@ class InvasorVerde inherits Invasor{
 
 class InvasorFuerte inherits Invasor{
 	
+	override method velocidad(){
+		return 500
+	}
+	
 	override method definirVida(){
 		vida=3
 	}
@@ -89,7 +99,26 @@ class InvasorFuerte inherits Invasor{
 	}
 }
 
+class Ovni inherits Invasor{
+	
+	override method velocidad(){
+		return 500
+	}
+	
+	override method definirVida(){
+		vida=2
+	}
+	
+	override method image(){
+		return "nave_invasor.png"
+	}
+}
+
 class Nodriza inherits Invasor{
+	
+	override method velocidad(){
+		return 1000
+	}
 	
 	override method definirVida(){
 		vida=5
@@ -97,6 +126,24 @@ class Nodriza inherits Invasor{
 	
 	override method image(){
 		return "nodriza.png"
+	}
+	
+	override method movimiento() {
+		if (self.puedeMover(moverHacia)) {
+			position = moverHacia.siguiente(self.position())
+		} else {
+			moverHacia.cambiarOpuesto(self)
+			position = moverHacia.siguiente(self.position())
+		}
+	}
+	
+	method invocarEnemigos(){
+		invasorVerdeFactory.crearInvasor(position.down(1),nivel)
+	}
+	
+	override method eliminarmeDeJuego(){
+		super()
+		game.removeTickEvent("refuerzos" + self.identity())
 	}
 }
 
@@ -109,12 +156,11 @@ class FactoryInvasor {
 		invasor.definirVida()
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(500, "invasion"+ invasor.identity(), {invasor.movimiento()})
+		game.onTick(invasor.velocidad(), "invasion"+ invasor.identity(), {invasor.movimiento()})
 		nivel_.enemigos().add(invasor)
 		return invasor
 	}
 }
-
 
 object invasorVerdeFactory inherits FactoryInvasor {
 
@@ -132,12 +178,19 @@ object invasorFuerteFactory inherits FactoryInvasor {
 
 }
 
+object ovniFactory inherits FactoryInvasor{
+	
+	override method invasor(posicion, _nivel) {
+		return new Ovni(nivel= _nivel, position=posicion)
+	}
+	
+}
+
 object nodrizaFactory inherits FactoryInvasor{
 	
 	override method invasor(posicion, _nivel) {
 		return new Nodriza(nivel= _nivel, position=posicion)
 	}
-	
 }
 
 

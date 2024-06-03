@@ -23,9 +23,9 @@ object f{
 	}
 	
 }
-object n{
+object o{
 	method generar(position,nivel){
-		 nodrizaFactory.crearInvasor(position,nivel)
+		 ovniFactory.crearInvasor(position,nivel)
 	}
 	
 }
@@ -33,6 +33,14 @@ object n{
 object c{
 	method generar(position,nivel){
 		game.addVisual(nivel.nave())
+	}
+	
+}
+
+object n{
+	method generar(position,nivel){
+		const nodriza= nodrizaFactory.crearInvasor(position,nivel)
+		game.onTick(4000, "refuerzos"+ nodriza.identity(), {nodriza.invocarEnemigos()})
 	}
 	
 }
@@ -53,4 +61,5 @@ object c{
 		[_,_,_,_,_,_,_,_,_,_,_,_,c,_,_,_,_,_,_,_,_,_,_,_,_]
 	].reverse()
  mapa para pasar el nivel rapido 
+ 
  */
