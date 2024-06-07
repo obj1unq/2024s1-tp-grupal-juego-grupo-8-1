@@ -35,6 +35,7 @@ class Nave {
 	method disparar() {
 		if (puedeDisparar) {
 			self.tipoBala().crearBala(self,arriba)
+			game.sound("disparo.mp3").play()
 			self.puedeDisparar(false)
 			game.schedule(self.velocidadDeDisparo(), {self.puedeDisparar(true)})
 			}

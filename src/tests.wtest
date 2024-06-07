@@ -8,7 +8,7 @@ import nivel.*
 describe "juego"{
 	const invasor = invasorFuerteFactory.crearInvasor(game.at(1,2),nivel1)
 	const invasorV = invasorVerdeFactory.crearInvasor(game.at(1,3),nivel1)
-	const bala = balaFuerteFactory.crearBala(nave1)
+	const bala = balaFuerteFactory.crearBala(nave1,arriba)
 	
 	method initialize(){
 		game.width(31)
@@ -21,7 +21,7 @@ describe "juego"{
 		assert.equals(game.at(12,1),bala.position())
 		
 		nivel1.nave(nave1)
-		invasor.atacado(1)
+		invasor.recibirDanio(1)
 		assert.equals( 2,invasor.vida() )
 
 	}
@@ -36,7 +36,7 @@ describe "juego"{
 	}
 	test "muerte de enemigo" {
 		assert.equals( 2,nivel1.enemigos().size())
-		invasorV.atacado(1)
+		invasorV.recibirDanio(1)
 		assert.equals( 1,nivel1.enemigos().size())
 	}
 	

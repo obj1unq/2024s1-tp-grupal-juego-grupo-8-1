@@ -37,7 +37,7 @@ class Nivel {
 		game.onCollideDo(nave, { algo => algo.colision(nave) })
 		//BALA
 		keyboard.space().onPressDo({ 	nave.disparar()
-										game.sound("disparo.mp3").play()
+										
 		})
 		
 		//keyboard 
