@@ -1,6 +1,7 @@
 import wollok.game.*
 import nivel.*
 import nave.*
+import disparo.*
 
 
 class Invasor {
@@ -10,6 +11,8 @@ class Invasor {
 	var moverHacia = izquierdaInvasor
 	const property nivel
 	var vida = null
+	const invasor = true
+	const property bando = invasores
 	
 	method velocidad()
 	
@@ -25,12 +28,17 @@ class Invasor {
 		moverHacia = _moverHacia
 	}
 	
-	method atacado(valor) {
+	method recibirDanio(valor){
 		if (vida-valor <= 0) {
-			self.eliminarmeDeJuego()
-			self.eliminarmeDelNivel()		
+			self.morir()
 		}
 		else vida -= valor
+	}
+	
+	method atacado(disparo) {
+		if(bando!=disparo.bando()){
+			self.recibirDanio(disparo.damage())
+		}
 	}
 	method eliminarmeDeJuego() {
 		game.removeVisual(self)
@@ -63,8 +71,13 @@ class Invasor {
 		cohete.morir()
 	}
 	
+	method iniciarOntick(){
+		game.onTick(self.velocidad(), "invasion"+ self.identity(), {self.movimiento()})
+	}
+	
 	method morir() {
-		
+		self.eliminarmeDeJuego()
+		self.eliminarmeDelNivel()	
 	}
 
 }
@@ -112,6 +125,21 @@ class Ovni inherits Invasor{
 	override method image(){
 		return "nave_invasor.png"
 	}
+	
+	override method iniciarOntick(){
+		super()
+		game.onTick(1500, "asalto"+ self.identity(), {self.disparar()})
+	}
+	method disparar(){
+		balaEnemigoFactory.crearBala(self,abajo)
+	}
+	method posicionCanion(){
+		return game.at(self.position().x(), self.position().y() - 1)
+	}
+	override method morir(){
+		super()
+		game.removeTickEvent("asalto" + self.identity())
+	}
 }
 
 class Nodriza inherits Invasor{
@@ -156,7 +184,7 @@ class FactoryInvasor {
 		invasor.definirVida()
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
-		game.onTick(invasor.velocidad(), "invasion"+ invasor.identity(), {invasor.movimiento()})
+		invasor.iniciarOntick()
 		nivel_.enemigos().add(invasor)
 		return invasor
 	}

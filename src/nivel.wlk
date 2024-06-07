@@ -223,3 +223,11 @@ object tablero {
 	
 	
 }
+
+object terrestre{
+	
+}
+
+object invasores{
+	
+}

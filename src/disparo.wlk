@@ -6,7 +6,8 @@ class Bala {
 
 	var property position  = null
 	var property image     = null
-	const moverHacia = arriba
+	const moverHacia
+	const property bando
 	
 	method velocidad()
 	
@@ -24,8 +25,11 @@ class Bala {
 	}
 	
 	method colision(algo) {
-		algo.atacado(self.damage())
-		self.removerBala()
+		algo.atacado(self)
+		if(algo.bando()!=bando){
+			self.removerBala()
+		}
+		
 	}
 	method removerBala() {
 		game.removeTickEvent("recorrido de bala " + self.identity())
@@ -34,26 +38,35 @@ class Bala {
 }
 
 class BalaFactory {
-	method bala()
-	method crearBala(nave) {
-		const bala = self.bala()
-		bala.position(game.at(nave.position().x(), nave.position().y() + 1))
+	method bala(direccion,bando_)
+	method crearBala(nave,direccion) {
+		const bala = self.bala(direccion,nave.bando())
+		bala.position(nave.posicionCanion())
 		game.addVisual(bala)
 		game.onTick(bala.velocidad(), "recorrido de bala " + bala.identity(), { bala.recorrer()})
 		return bala
+	}
+	method posicionBala(nave){
+		nave.posicionCanion()
 	}
 
 }
 
 object balaFuerteFactory inherits BalaFactory{
-	override method bala() {
-		return new BalaFuerte()
+	override method bala(direccion,bando_) {
+		return new BalaFuerte(moverHacia=direccion,bando=bando_)
 	}
 }
 
 object balaRapidaFactory inherits BalaFactory{
-	override method bala() {
-		return new BalaRapida()
+	override method bala(direccion,bando_) {
+		return new BalaRapida(moverHacia=direccion,bando=bando_)
+	}
+}
+
+object balaEnemigoFactory inherits BalaFactory{
+	override method bala(direccion,bando_) {
+		return new BalaEnemigo(moverHacia=direccion,bando=bando_)
 	}
 }
 
@@ -79,6 +92,23 @@ class BalaFuerte inherits Bala {
  	override method velocidad() {
  		return 250
  	}
+}
+
+class BalaEnemigo inherits Bala{
+	
+	override method image() {
+ 		return "shot_basic.png" // luego cambiar png
+ 	}
+ 	override method damage() {
+ 		return  1
+ 	}
+ 	override method velocidad() {
+ 		return 250
+ 	}
+ 	
+ 	override method esUltimaPosicion() {
+		return self.position().y() < 1
+	}
 }
 
 
