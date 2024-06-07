@@ -1,10 +1,15 @@
 import wollok.game.*
 import nivel.*
 import disparo.*
+
 class Nave {
 	var property estadoNave = vivo
 	var property position = game.at(12,0)
 	var property puedeDisparar=true
+	const invasor = false
+	const property bando = terrestre
+	var property vida
+	
 	method image()
 	
 	method estadoNave(estadoNave_) { 
@@ -29,7 +34,8 @@ class Nave {
 	} 
 	method disparar() {
 		if (puedeDisparar) {
-			self.tipoBala().crearBala(self)
+			self.tipoBala().crearBala(self,arriba)
+			game.sound("disparo.mp3").play()
 			self.puedeDisparar(false)
 			game.schedule(self.velocidadDeDisparo(), {self.puedeDisparar(true)})
 			}
@@ -43,8 +49,18 @@ class Nave {
 	method colision(algo) {
 		
 	}
+	
+	method atacado(bala){
+		if(vida-bala.damage()<= 0){
+			self.morir()
+		}else{vida=vida-bala.damage()}
+	}
+	
+	method posicionCanion(){
+		return game.at(self.position().x(), self.position().y() + 1)
+	}
 }
-object nave1 inherits Nave{
+object nave1 inherits Nave(vida=5){
 	var property tipoBala = balaRapidaFactory
 	override method velocidadDeDisparo() {
 		return 600
@@ -56,7 +72,7 @@ object nave1 inherits Nave{
 		return "nave.png"
 	}
 }
-object nave2 inherits Nave{
+object nave2 inherits Nave(vida=3){
 	var property tipoBala = balaFuerteFactory
 	override method velocidadDeDisparo() {
 		return 1000
