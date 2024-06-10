@@ -26,7 +26,7 @@ describe "juego"{
 		assert.equals( 2,invasor.vida() )
 
 	}
-	test "creacion de enemigos"{
+	test "creacion de enemigos."{
 		assert.equals(game.at(1,2),invasor.position())
 		assert.equals( 2,nivel1.enemigos().size())// se tiene en cuenta los invasores creados en el describe
 		nivel1.nave(nave1)
