@@ -54,9 +54,20 @@ describe "nave" {
 	test "la nave en posicion 12,0 y un alien lo choca, fin del juego" {
 		game.addVisual(nave1)
 		invasor.colision(nave1)
-		assert.equals(#{nave1}, game.allVisuals().asSet())
+		assert.equals(#{nave1, gameOver}, game.allVisuals().asSet())
 	}
-	
+	test "muerte de nave"{
+		const bala=new BalaEnemigo(moverHacia=abajo, bando=invasores)
+		game.addVisual(nave1)
+		assert.equals(5, nave1.vida())
+		nave1.atacado(bala)
+		assert.equals(4, nave1.vida())
+		nave1.atacado(bala)
+		nave1.atacado(bala)
+		nave1.atacado(bala)
+		nave1.atacado(bala)
+		assert.equals(0, nave1.vida())
+	}
 	
 }
 
