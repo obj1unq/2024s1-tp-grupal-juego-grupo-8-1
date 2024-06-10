@@ -78,7 +78,7 @@ class Invasor {
 	method morir() {
 		self.eliminarmeDeJuego()
 		self.eliminarmeDelNivel()
-		game.sound("muerte.mp3").play()
+		//game.sound("muerte.mp3").play()
 	}
 
 }

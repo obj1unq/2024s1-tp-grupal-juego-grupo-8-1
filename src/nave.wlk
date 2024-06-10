@@ -10,6 +10,7 @@ class Nave {
 	const invasor = false
 	const property bando = terrestre
 	var property vida
+	var property daniado=false
 	
 	method image()
 	
@@ -58,9 +59,21 @@ class Nave {
 		if(vida-bala.damage()<= 0){
 			vida=vida-bala.damage()
 			self.morir()
-		}else{vida=vida-bala.damage()}
+		}else{	vida=vida-bala.damage()
+				game.onTick(100, "daniado", { self.daniado()})
+				game.schedule(500, { 	game.removeTickEvent("daniado")
+										self.daniado(false)
+				} )
+		}
 	}
-	
+	method daniado(){
+		if(daniado){
+			daniado=false
+		}
+		else{
+			daniado=true
+		}
+	}
 	method posicionCanion(){
 		return game.at(self.position().x(), self.position().y() + 1)
 	}
@@ -74,7 +87,13 @@ object nave1 inherits Nave(vida=5){
 		return tipoBala
 	}
 	override method image(){
-		return "nave.png"
+		return 
+		if(not daniado){
+			"nave.png"
+		}
+		else{
+			"navedaniado.jpg"
+		}
 	}
 	override method reiniciarNave(){
 		super()
@@ -96,7 +115,13 @@ object nave2 inherits Nave(vida=3){
 		return tipoBala
 	}
 	override method image(){
-		return "nave2.png"
+		return 
+		if(not daniado){
+			"nave2.png"
+		}
+		else{
+			"navedaniado.jpg"
+		}
 	}
 }
 class EstadoDeNave {
