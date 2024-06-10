@@ -167,7 +167,7 @@ class Nodriza inherits Invasor{
 	}
 	
 	method invocarEnemigos(){
-		invasorVerdeFactory.crearInvasor(position.down(1),nivel)
+		ovniFactory.crearInvasor(position.down(1),nivel)
 	}
 	
 	override method eliminarmeDeJuego(){
