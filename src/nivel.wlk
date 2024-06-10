@@ -45,6 +45,9 @@ class Nivel {
 							menu.iniciar()})	
 		
 	}
+	method agregarEnemigo(invasor){
+		enemigos.add(invasor)
+	}
 	
 	
 	method ganar(){
