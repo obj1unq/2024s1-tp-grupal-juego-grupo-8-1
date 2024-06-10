@@ -77,7 +77,8 @@ class Invasor {
 	
 	method morir() {
 		self.eliminarmeDeJuego()
-		self.eliminarmeDelNivel()	
+		self.eliminarmeDelNivel()
+		game.sound("muerte.mp3").play()
 	}
 
 }
@@ -166,7 +167,7 @@ class Nodriza inherits Invasor{
 	}
 	
 	method invocarEnemigos(){
-		invasorVerdeFactory.crearInvasor(position.down(1),nivel)
+		ovniFactory.crearInvasor(position.down(1),nivel)
 	}
 	
 	override method eliminarmeDeJuego(){
@@ -185,7 +186,7 @@ class FactoryInvasor {
 		game.addVisual(invasor)
 		game.onCollideDo(invasor, {algo => algo.colision(invasor)})
 		invasor.iniciarOntick()
-		nivel_.enemigos().add(invasor)
+		nivel_.agregarEnemigo(invasor)
 		return invasor
 	}
 }
