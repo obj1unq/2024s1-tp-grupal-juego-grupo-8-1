@@ -25,9 +25,9 @@ class Bala {
 	}
 	
 	method colision(algo) {
-		algo.atacado(self)
 		if(algo.bando()!=bando){
 			self.removerBala()
+			algo.atacado(self)
 		}
 		
 	}
