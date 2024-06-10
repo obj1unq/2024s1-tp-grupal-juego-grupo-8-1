@@ -1,6 +1,7 @@
 import wollok.game.*
 import nivel.*
 import disparo.*
+import gameOver.*
 
 class Nave {
 	var property estadoNave = vivo
@@ -14,6 +15,9 @@ class Nave {
 	
 	method estadoNave(estadoNave_) { 
 			estadoNave = estadoNave_
+	}
+	method reiniciarNave(){
+		estadoNave=vivo
 	}
 	
  	method mover(direccion) {
@@ -52,6 +56,7 @@ class Nave {
 	
 	method atacado(bala){
 		if(vida-bala.damage()<= 0){
+			vida=vida-bala.damage()
 			self.morir()
 		}else{vida=vida-bala.damage()}
 	}
@@ -71,11 +76,21 @@ object nave1 inherits Nave(vida=5){
 	override method image(){
 		return "nave.png"
 	}
+	override method reiniciarNave(){
+		super()
+		vida=5
+		
+	}
 }
 object nave2 inherits Nave(vida=3){
 	var property tipoBala = balaFuerteFactory
 	override method velocidadDeDisparo() {
 		return 1000
+	}
+	override method reiniciarNave(){
+		super()
+		vida=3
+		
 	}
 	override method tipoBala() {
 		return tipoBala
@@ -115,9 +130,10 @@ object ganador inherits EstadoDeNave {
 object destruido inherits EstadoDeNave{
 	override method activar() {
 		game.clear()
-		game.addVisualIn(nave,game.at(12,1))
-		game.say(nave, "Mision Fallida!")
-		game.schedule(1000, { game.stop()})
+		menuGameOver.iniciar(nave)
+		//game.schedule(5000, { game.stop()})
 	}
 }
+	
+
 
