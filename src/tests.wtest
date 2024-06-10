@@ -3,6 +3,7 @@ import enemigos.*
 import nave.*
 import disparo.*
 import nivel.*
+import gameOver.*
 
 
 describe "juego"{
