@@ -54,7 +54,7 @@ object musicaFondo{
 	method gameOver(){
 		fondo.shouldLoop(false)
 		fondo.stop()
-		fondo = game.sound("muerte.mp3")//cambiar por musica de game over
+		fondo = game.sound("sonidoGameOver.mp3")
 		fondo.shouldLoop(true)
 		game.schedule(500, { fondo.play()} )
 	}
