@@ -60,7 +60,7 @@ class Nave {
 			vida=vida-bala.damage()
 			self.morir()
 		}else{	vida=vida-bala.damage()
-				game.onTick(100, "daniado", { self.daniado()})
+				game.onTick(100, "daniado", {self.daniado()})
 				game.schedule(500, { 	game.removeTickEvent("daniado")
 										self.daniado(false)
 				} )

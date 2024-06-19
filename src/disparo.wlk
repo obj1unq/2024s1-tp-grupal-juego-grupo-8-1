@@ -72,7 +72,7 @@ object balaEnemigoFactory inherits BalaFactory{
 
 class BalaRapida inherits Bala {
  	override method image() {
- 		return "shot_basic.png"
+ 		return "shot_basic_bueno.png"
  	}
  	override method damage() {
  		return 1
@@ -84,7 +84,7 @@ class BalaRapida inherits Bala {
 
 class BalaFuerte inherits Bala {
  	override method image() {
- 		return "shot_basic.png" // luego cambiar png
+ 		return "shot_basic_bueno.png" // luego cambiar png
  	}
  	override method damage() {
  		return  2.5
