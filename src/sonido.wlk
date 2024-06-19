@@ -40,3 +40,23 @@ object soundMock {
 	
 	method volume() = 0
 }
+
+object musicaFondo{
+	
+	var property fondo = null
+	
+	method iniciar(){
+		fondo = game.sound("musicaFondo.mp3")
+		fondo.shouldLoop(true)
+		game.schedule(500, { fondo.play()} )
+	}
+	
+	method gameOver(){
+		fondo.shouldLoop(false)
+		fondo.stop()
+		fondo = game.sound("muerte.mp3")//cambiar por musica de game over
+		fondo.shouldLoop(true)
+		game.schedule(500, { fondo.play()} )
+	}
+	
+}

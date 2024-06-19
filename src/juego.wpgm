@@ -1,5 +1,6 @@
 import wollok.game.*
 import menu.*
+import sonido.*
 
 program juego {
 	game.title("Space Defender")
@@ -8,9 +9,7 @@ program juego {
 	
 	
 	//CONFIGURAR MENU
-	const fondo = game.sound("musicaFondo.mp3")
-	fondo.shouldLoop(true)
-	game.schedule(500, { fondo.play()} )
+	musicaFondo.iniciar()
 	menu.iniciar()
 	
 	//INICIO 

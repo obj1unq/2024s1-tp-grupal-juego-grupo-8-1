@@ -2,8 +2,11 @@ import wollok.game.*
 import nivel.*
 import menu.*
 import nave.*
+import sonido.*
+
 object menuGameOver {
 	method iniciar(nave){
+		musicaFondo.gameOver()
 		game.addVisual(gameOver)
 		game.addVisualIn(nave,game.at(12,1))
 		game.say(nave, "Mision Fallida!")
