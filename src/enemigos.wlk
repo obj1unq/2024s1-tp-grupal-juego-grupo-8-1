@@ -2,6 +2,7 @@ import wollok.game.*
 import nivel.*
 import nave.*
 import disparo.*
+import sonido.*
 
 
 class Invasor {
@@ -76,9 +77,9 @@ class Invasor {
 	}
 	
 	method morir() {
+		soundProducer.sound("muerte.mp3").play()
 		self.eliminarmeDeJuego()
 		self.eliminarmeDelNivel()
-		//game.sound("muerte.mp3").play()
 	}
 
 }
@@ -167,7 +168,7 @@ class Nodriza inherits Invasor{
 	}
 	
 	method invocarEnemigos(){
-		ovniFactory.crearInvasor(position.down(1),nivel)
+		invasorVerdeFactory.crearInvasor(position.down(1),nivel)
 	}
 	
 	override method eliminarmeDeJuego(){
