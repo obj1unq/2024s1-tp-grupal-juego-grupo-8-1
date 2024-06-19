@@ -4,6 +4,7 @@ import enemigos.*
 import disparo.*
 import mapaNivel.*
 import menu.*
+import sonido.*
 
 class Nivel {
 	var property nave = null
@@ -124,6 +125,7 @@ object nivel2 inherits Nivel{
 		game.clear()
 		nivel3.nave(self.nave())
 		nivel3.iniciar()
+		musicaFondo.finalBoss()
 	}
 	
 }
