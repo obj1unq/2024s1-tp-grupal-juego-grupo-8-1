@@ -62,7 +62,7 @@ object musicaFondo{
 	method finalBoss(){
 		fondo.shouldLoop(false)
 		fondo.stop()
-		fondo = game.sound("musicaFondo.mp3")//cambiar por musica de jefe
+		fondo = game.sound("musicaJefe.mp3")//cambiar por musica de jefe
 		fondo.shouldLoop(true)
 		game.schedule(500, { fondo.play()} )
 	}
