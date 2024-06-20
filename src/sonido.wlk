@@ -58,7 +58,7 @@ object musicaFondo{
 		self.parar()
 		fondo = game.sound("sonidoGameOver.mp3")
 		fondo.play()
-		game.schedule(5000, {fondo = game.sound("musicaFondo.mp3")//cambiar por musica de game over para loop
+		game.schedule(5000, {fondo = game.sound("sonidoGameOverContinuacion.mp3")//cambiar por musica de game over para loop
 							fondo.shouldLoop(true)
 							fondo.play()
 		} )
