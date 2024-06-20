@@ -46,24 +46,32 @@ object musicaFondo{
 	var property fondo = null
 	
 	method iniciar(){
+		if(fondo!=null){
+			self.parar()
+		}
 		fondo = game.sound("musicaFondo.mp3")
 		fondo.shouldLoop(true)
 		game.schedule(500, { fondo.play()} )
 	}
 	
 	method gameOver(){
-		fondo.shouldLoop(false)
-		fondo.stop()
+		self.parar()
 		fondo = game.sound("sonidoGameOver.mp3")
-		fondo.shouldLoop(true)
-		game.schedule(500, { fondo.play()} )
+		fondo.play()
+		game.schedule(5000, {fondo = game.sound("musicaFondo.mp3")//cambiar por musica de game over para loop
+							fondo.shouldLoop(true)
+							fondo.play()
+		} )
 	}
 	
 	method finalBoss(){
-		fondo.shouldLoop(false)
-		fondo.stop()
-		fondo = game.sound("musicaJefe.mp3")//cambiar por musica de jefe
+		self.parar()
+		fondo = game.sound("musicaJefe.mp3")
 		fondo.shouldLoop(true)
 		game.schedule(500, { fondo.play()} )
+	}
+	method parar(){
+		fondo.shouldLoop(false)
+		fondo.stop()
 	}
 }
