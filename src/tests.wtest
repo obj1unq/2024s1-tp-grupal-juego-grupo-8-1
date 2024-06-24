@@ -20,13 +20,22 @@ describe "juego"{
 	}
 	
 	test "testeo de Daño y posicion de la bala" {
+		const invasorO = ovniFactory.crearInvasor(game.at(1,7),nivel1)
+		const laser = balaEnemigoFactory.crearBala(invasorO,abajo)
+		
+		assert.equals(game.at(1,6),laser.position())
+		
 		
 		assert.equals(game.at(12,1),bala.position())
+		assert.equals( 3,invasor.vida() )
 		
 		nivel1.nave(nave1)
 		invasor.recibirDanio(1)
 		assert.equals( 2,invasor.vida() )
-
+		
+		nave1.atacado(laser)
+		assert.equals( 4,nave1.vida() )
+		
 	}
 	test "creacion de enemigos y nave."{
 		assert.equals(game.at(1,2),invasor.position())
