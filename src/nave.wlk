@@ -2,6 +2,7 @@ import wollok.game.*
 import nivel.*
 import disparo.*
 import gameOver.*
+import sonido.*
 
 class Nave {
 	var property estadoNave = vivo

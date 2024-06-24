@@ -28,13 +28,13 @@ describe "juego"{
 		assert.equals( 2,invasor.vida() )
 
 	}
-	test "creacion de enemigos."{
+	test "creacion de enemigos y nave."{
 		assert.equals(game.at(1,2),invasor.position())
 		assert.equals( 2,nivel1.enemigos().size())// se tiene en cuenta los invasores creados en el describe
 		nivel1.nave(nave1)
 		nivel1.generar()
-		assert.equals(1,game.getObjectsIn(game.at(5,4)).size())
-		
+		assert.equals(1,game.getObjectsIn(game.at(5,5)).size())
+		assert.equals([nave1],game.getObjectsIn(game.at(12,0)))
 		assert.equals( 38,nivel1.enemigos().size())
 	}
 	test "muerte de enemigo" {
@@ -51,6 +51,7 @@ describe "nave" {
 	method initialize(){
 		game.width(31)
 		game.height(19)
+		soundProducer.provider(soundProviderMock)
 	
 	}
 	

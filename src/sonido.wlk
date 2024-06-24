@@ -49,7 +49,7 @@ object musicaFondo{
 	
 	method iniciar(){
 		self.parar()
-		fondo = game.sound("musicaFondo.mp3")
+		fondo = soundProducer.sound("musicaFondo.mp3")
 		fondo.shouldLoop(true)
 		loop = true
 		game.schedule(500, { fondo.play()} )
@@ -57,7 +57,7 @@ object musicaFondo{
 	
 	method gameOver(){
 		self.parar()
-		fondo = game.sound("sonidoGameOver.mp3")
+		fondo = soundProducer.sound("sonidoGameOver.mp3")
 		fondo.play()
 		loop = false
 		
@@ -65,7 +65,7 @@ object musicaFondo{
 	
 	method finalBoss(){
 		self.parar()
-		fondo = game.sound("musicaJefe.mp3")
+		fondo = soundProducer.sound("musicaJefe.mp3")
 		fondo.shouldLoop(true)
 		loop = true
 		game.schedule(500, { fondo.play()} )
