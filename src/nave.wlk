@@ -59,6 +59,7 @@ class Nave {
 	}
 	
 	method atacado(bala){
+		soundProducer.sound("hitNave.mp3").play()
 		if(vida-bala.damage()<= 0){
 			vida=vida-bala.damage()
 			self.morir()
