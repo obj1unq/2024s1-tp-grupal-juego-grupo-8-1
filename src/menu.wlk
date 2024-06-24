@@ -20,12 +20,14 @@ object menu {
 									
 									//INICIAR NIVEL CON NAVE 1
 									nivel1.nave(nave1)
+									nave1.reiniciarNave()
 								    game.schedule(1000, {nivel1.iniciar()})
 								 })
 		keyboard.num2().onPressDo({ game.clear()
 			
 									//INICIAR NIVEL CON NAVE 2	
 									nivel1.nave(nave2)
+									nave2.reiniciarNave()
 								    game.schedule(1000, {nivel1.iniciar()})
 								 })
 		//Salir 

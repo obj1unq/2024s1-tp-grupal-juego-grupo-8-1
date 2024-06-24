@@ -43,7 +43,7 @@ class Nivel {
 		
 		//keyboard 
 		keyboard.r().onPressDo({game.clear()
-							menu.iniciar()})	
+								menu.iniciar()})	
 		
 	}
 	method agregarEnemigo(invasor){

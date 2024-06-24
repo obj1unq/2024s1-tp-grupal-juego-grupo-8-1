@@ -21,6 +21,7 @@ class Nave {
 	method reiniciarNave(){
 		estadoNave=vivo
 		position = game.at(12,0)
+		puedeDisparar = true
 	}
 	
  	method mover(direccion) {
