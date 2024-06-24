@@ -11,8 +11,7 @@ object menuGameOver {
 		game.addVisualIn(nave,game.at(12,1))
 		game.say(nave, "Mision Fallida!")
 		keyboard.r().onPressDo({game.clear()
-							menu.iniciar()
-							musicaFondo.iniciar()})
+							menu.iniciar()})
 		keyboard.backspace().onPressDo({game.stop()})
 	}
 	
