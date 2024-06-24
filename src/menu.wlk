@@ -11,6 +11,7 @@ object menu {
 		game.addVisual(nave2menu)
 		game.addVisual(numero1)
 		game.addVisual(numero2)
+		game.addVisual(seleccion)
 		
 		//FONDO DE TODO EL GAME ACTUALMENTE
 		game.boardGround("space.jpg")
@@ -46,6 +47,12 @@ object nave2menu {
 	var property position=game.at(15,5)
 	 method image(){
 		return "nave2 (agrandado).png"
+	}
+}
+object seleccion{
+	var property position=game.at(3,10)
+	 method image(){
+		return "select.png"
 	}
 }
 
