@@ -1,4 +1,4 @@
-# Nombre del juego (<- borrar y completar)
+# Wollok invaders
 
 ## Equipo de desarrollo
 
@@ -9,15 +9,20 @@
 
 ## Capturas
 
-(agregar)
+
 
 ## Reglas de Juego / Instrucciones
 
-(Escribirlas)
+Moverse : "Flecha izquierda" y "Flecha derecha"
 
+Disparar : Espacio
+
+Reiniciar juego : "R"
+
+Cerrar Juego : "Backspace"
 
 ## Otros
 
-- Curso/Facultad
-- Versión de wollok
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Curso/Facultad : Comision 2 de Programacion en objetos 1/ Unqui
+
+- Una vez terminado, no tenemos problemas en que el repositorio sea público
