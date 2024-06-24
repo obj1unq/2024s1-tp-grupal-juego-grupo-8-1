@@ -1,10 +1,11 @@
 import wollok.game.*
 import nivel.*
 import nave.*
+import sonido.*
 
 object menu {
 	method iniciar(){
-		
+		musicaFondo.iniciar()
 		//VISUALES DEL MENU
 		game.addVisual(nave1menu)
 		game.addVisual(nave2menu)
