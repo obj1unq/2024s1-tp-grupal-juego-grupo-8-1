@@ -9,7 +9,7 @@ program juego {
 	
 	
 	//CONFIGURAR MENU
-	musicaFondo.iniciar()
+	
 	menu.iniciar()
 	
 	//INICIO 
