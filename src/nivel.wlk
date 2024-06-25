@@ -62,7 +62,7 @@ class Nivel {
 	method ganar(){
 		if (enemigos.isEmpty()){
 			nave.ganar()
-			game.schedule(1000, {self.siguientePantalla()})
+			game.schedule(100, {self.siguientePantalla()})
 		}
 	}
 	
