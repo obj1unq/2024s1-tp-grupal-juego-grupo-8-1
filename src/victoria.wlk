@@ -10,7 +10,6 @@ object menuVictoria
 		musicaFondo.victory()
 		game.addVisual(misionCumplida)
 		game.addVisualIn(nave,game.at(12,1))
-		game.say(nave, "Mision Cumplida!")
 		keyboard.r().onPressDo({game.clear()
 							menu.iniciar()})
 		keyboard.backspace().onPressDo({game.stop()})

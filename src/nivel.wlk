@@ -45,8 +45,10 @@ class Nivel {
 		//keyboard 
 		keyboard.r().onPressDo({game.clear()
 								menu.iniciar()})	
-		keyboard.g().onPressDo({game.clear()
+								
+		/*keyboard.g().onPressDo({game.clear()
 								menuVictoria.iniciar(nave)})	
+	*/
 	}
 	method agregarEnemigo(invasor){
 		enemigos.add(invasor)
