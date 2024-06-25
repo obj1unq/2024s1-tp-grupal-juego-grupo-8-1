@@ -71,12 +71,7 @@ class Nave {
 		}
 	}
 	method daniado(){
-		if(daniado){
-			daniado=false
-		}
-		else{
-			daniado=true
-		}
+		daniado = not daniado
 	}
 	method posicionCanion(){
 		return game.at(self.position().x(), self.position().y() + 1)
