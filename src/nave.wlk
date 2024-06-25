@@ -150,7 +150,6 @@ object ganador inherits EstadoDeNave {
 	
 	override method activar(){
 		nave.position(game.at(12,1))
-		nave.estadoNave(vivo)
 		//game.schedule(1000, { game.stop()})
 	}
 }

@@ -32,7 +32,7 @@ class Nivel {
 	method iniciar(){
 		//VISUALES
 		self.generar()
-		
+		nave.reiniciarNave()
 		//COMPORTAMIENTO DE NAVE
 		keyboard.left().onPressDo({ nave.mover(izquierda) })
 		keyboard.right().onPressDo({ nave.mover(derecha) })
