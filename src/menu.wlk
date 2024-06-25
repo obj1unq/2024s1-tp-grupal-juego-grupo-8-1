@@ -17,7 +17,7 @@ object menu {
 		game.boardGround("space.jpg")
 		
 		//SELECCION DE NAVE
-		keyboard.num1().onPressDo({ game.clear()
+		game.schedule(1000, {keyboard.num1().onPressDo({ game.clear()
 									
 									//INICIAR NIVEL CON NAVE 1
 									nivel1.nave(nave1)
@@ -31,6 +31,7 @@ object menu {
 									nave2.reiniciarNave()
 								    game.schedule(1000, {nivel1.iniciar()})
 								 })
+		})
 		//Salir 
 		keyboard.backspace().onPressDo({game.stop()})
 	}
