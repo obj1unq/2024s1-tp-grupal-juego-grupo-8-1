@@ -28,9 +28,13 @@ class Nivel {
 		const celda = self.celdas().get(y).get(x)
 		celda.generar(game.at(x,y),self)
 	}
-
+	
+	method limpiarEnemigos() {
+		enemigos=[]		
+	}
 	method iniciar(){
 		//VISUALES
+		self.limpiarEnemigos()
 		self.generar()
 		nave.reiniciarNave()
 		//COMPORTAMIENTO DE NAVE
