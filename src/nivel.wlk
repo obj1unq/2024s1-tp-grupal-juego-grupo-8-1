@@ -5,6 +5,7 @@ import disparo.*
 import mapaNivel.*
 import menu.*
 import sonido.*
+import victoria.*
 
 class Nivel {
 	var property nave = null
@@ -44,7 +45,8 @@ class Nivel {
 		//keyboard 
 		keyboard.r().onPressDo({game.clear()
 								menu.iniciar()})	
-		
+		keyboard.g().onPressDo({game.clear()
+								menuVictoria.iniciar(nave)})	
 	}
 	method agregarEnemigo(invasor){
 		enemigos.add(invasor)
@@ -155,7 +157,7 @@ object nivel3 inherits Nivel{
 	
 	override method siguientePantalla(){
 		game.clear()
-		menu.iniciar() //mas adelante pantalla final o puntaje
+		menuVictoria.iniciar(nave) 
 	}
 }
 

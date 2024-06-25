@@ -63,6 +63,13 @@ object musicaFondo{
 		
 	}
 	
+	method victory(){
+		self.parar()
+		fondo = soundProducer.sound("victory.mp3")
+		fondo.play()
+		loop = false
+	}
+	
 	method finalBoss(){
 		self.parar()
 		fondo = soundProducer.sound("musicaJefe.mp3")
