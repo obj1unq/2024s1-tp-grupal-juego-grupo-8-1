@@ -5,7 +5,7 @@
 - Grupo 8
 - CabralHector Joel 
 - Ignacio Ariel Gimenez
-- Franco Espinoza
+- Franco Espinosa
 
 ## Capturas
 
